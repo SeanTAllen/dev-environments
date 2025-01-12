@@ -4,11 +4,22 @@ on:
   schedule:
     - cron: '0 7 * * *'
 
+permissions:
+  packages: write
+
 jobs:
   develop-with-pony:
     name: Develop with Pony
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Login to GitHub Container Registry
+        # v2.2.0
+        uses: docker/login-action@5139682d94efc37792e6b54386b5b470a68a4737
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker build and Push
         run: bash develop-with-pony/build-and-push.sh
