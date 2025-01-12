@@ -34,6 +34,7 @@ RUN apk add \
   make \
   openssh \
   pcre2-dev \
+  pinentry-tty \
   vim
 
 # vim not vi
