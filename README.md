@@ -49,4 +49,6 @@ To save yourself a lot of pain, make sure you create the `docker` group with the
 
 ### GNU Privacy Guard
 
-I use GnuPG to sign my git commits. This means that I need to have my GPG key available in the container. I've done this by mounting my `.gnupg` directory into the container. However, I discovered that it wouldn't work as it needed a tty to prompt me for my passphrase. If you decide to learn from what I've done here, note that your `/gpg-agent.conf` file has to include `pinentry-program /usr/bin/pinentry-tty`. This means that you have to install `pinentry-tty` in your container.
+I use GnuPG to sign my git commits. This means that I need to have my GPG key available in the container. I've done this by mounting my `.gnupg` directory into the container. However, I discovered that it wouldn't work as couldn't prompt me for my passphrase. If you decide to learn from what I've done here, note that your `gpg-agent.conf` file has to include `pinentry-program /usr/bin/pinentry-tty`. This means that you have to install `pinentry-tty` in your container.
+
+In addition, as in other environments, you need to make sure the environment variable `GPG_TTY` is set to your tty.
