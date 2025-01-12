@@ -1,4 +1,4 @@
-name: Validate images
+name: Validate Images
 
 on: pull_request_target
 
@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   validate-develop-with-pony-image-builds:
-    name: Validate
+    name: Develop with Pony
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
