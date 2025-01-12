@@ -1,0 +1,16 @@
+name: Validate images
+
+on: pull_request_target
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-develop-with-pony-image-builds:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Docker build
+        run: "docker build --pull --file=develop-with-pony/Dockerfile ."
