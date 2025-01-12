@@ -21,7 +21,6 @@ RUN apk add --update --no-cache \
 
 # Everything else
 RUN apk add --update --no-cache \
-  docs \
   binutils-gold \
   build-base \
   clang \
