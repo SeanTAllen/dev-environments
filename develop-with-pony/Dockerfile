@@ -15,12 +15,12 @@ RUN apk add --update --no-cache \
   docs
 
 # Install shells first for any tools get clever about installing shell specific completions
-RUN apk add \
+RUN apk add --update --no-cache \
   bash \
   fish
 
 # Everything else
-RUN apk add \
+RUN apk add --update --no-cache \
   docs \
   binutils-gold \
   build-base \
