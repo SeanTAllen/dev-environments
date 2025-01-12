@@ -1,0 +1,14 @@
+name: Daily Image Builds
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+
+jobs:
+  develop-with-pony:
+    name: Develop with Pony
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Docker build and Push
+        run: bash develop-with-pony/build-and-push.sh
