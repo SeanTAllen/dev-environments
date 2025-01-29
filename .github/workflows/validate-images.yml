@@ -6,6 +6,9 @@ concurrency:
   group: pr-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   validate-develop-with-pony-image-builds:
     name: Develop with Pony
