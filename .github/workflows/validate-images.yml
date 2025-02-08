@@ -17,3 +17,11 @@ jobs:
       - uses: actions/checkout@v4.1.1
       - name: Docker build
         run: "docker build --pull --file=develop-with-pony/Dockerfile ."
+
+  validate-develop-credo-image-builds:
+    name: Develop credo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Docker build
+        run: "docker build --pull --file=develop-credo/Dockerfile ."
