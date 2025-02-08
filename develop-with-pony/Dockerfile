@@ -1,6 +1,6 @@
 FROM alpine:3.20
 
-LABEL org.opencontainers.image.source = "https://github.com/seantallen/dev-environments"
+LABEL org.opencontainers.image.source="https://github.com/seantallen/dev-environments"
 
 # Do basic user and group setup
 RUN addgroup -g 107 docker \
