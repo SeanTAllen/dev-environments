@@ -3,7 +3,7 @@ name: Lint GitHub Action Workflows
 on: pull_request_target
 
 concurrency:
-  group: lint-actions-${{ github.ref }}
+  group: lint-actions-${{ github.head_ref }}
   cancel-in-progress: true
 
 permissions:

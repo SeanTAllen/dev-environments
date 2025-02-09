@@ -3,7 +3,7 @@ name: Validate Images
 on: pull_request_target
 
 concurrency:
-  group: pr-${{ github.ref }}
+  group: validate-images-${{ github.head_ref }}
   cancel-in-progress: true
 
 permissions:
