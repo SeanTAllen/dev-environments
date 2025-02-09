@@ -29,6 +29,7 @@ RUN apk add --update --no-cache \
   doas \
   git \
   gnupg \
+  less \
   libressl-dev \
   lldb \
   make \
