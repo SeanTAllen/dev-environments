@@ -45,7 +45,7 @@ RUN git clone https://github.com/microsoft/rego-cpp.git \
   && cd build \
   && cmake .. --preset release-clang \
   && ninja install \
-  && cp -r dist/lib/librego.a /usr/local/lib \
+  && cp -r dist/lib/*.a /usr/local/lib \
   && cd / \
   && rm -rf rego-cpp
 
