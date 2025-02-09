@@ -46,7 +46,19 @@ RUN git clone https://github.com/microsoft/rego-cpp.git \
   && cd build \
   && cmake .. --preset release-clang \
   && ninja install \
-  && cp -r dist/lib/*.a /usr/local/lib \
+  && cd dist/lib/ \
+  && cp `clang --print-file-name='libstdc++.a'` libstdcpp.a \
+  && echo "create librego-standalone.a" > standalone.mri \
+  && echo "addlib libstdcpp.a" >> standalone.mri \
+  && echo "addlib libjson.a" >> standalone.mri \
+  && echo "addlib libre2.a" >> standalone.mri \
+  && echo "addlib librego.a" >> standalone.mri \
+  && echo "addlib libsnmalloc-new-override.a" >> standalone.mri \
+  && echo "addlib libyaml.a" >> standalone.mri \
+  && echo "save" >> standalone.mri \
+  && echo "end" >> standalone.mri \
+  && ar -M < standalone.mri \
+  && cp librego-standalone.a /usr/local/lib \
   && cd / \
   && rm -rf rego-cpp
 
