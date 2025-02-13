@@ -8,8 +8,8 @@ RUN apk add --update --no-cache \
   git \
   ninja
 
-# Build latest rego-cpp
-RUN git clone https://github.com/microsoft/rego-cpp.git \
+# Build rego-cpp v0.4.6
+RUN git clone --branch v0.4.6 https://github.com/microsoft/rego-cpp.git \
   && cd rego-cpp \
   && mkdir build \
   && cd build \
