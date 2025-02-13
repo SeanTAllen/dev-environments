@@ -25,6 +25,9 @@ jobs:
         run: bash develop-with-pony/build-and-push.sh
 
   develop-credo:
+    needs:
+      - develop-with-pony
+
     name: Develop credo
     runs-on: ubuntu-latest
     steps:
@@ -62,4 +65,3 @@ jobs:
           package-type: 'container'
           min-versions-to-keep: 1
           delete-only-untagged-versions: 'true'
-
