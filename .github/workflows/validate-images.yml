@@ -8,7 +8,6 @@ concurrency:
 
 permissions:
   contents: read
-  packages: read
 
 jobs:
   validate-develop-with-pony-image-builds:
@@ -16,13 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: Login to GitHub Container Registry
-        # v2.2.0
-        uses: docker/login-action@5139682d94efc37792e6b54386b5b470a68a4737
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker build
         run: "docker build --pull --file=develop-with-pony/Dockerfile ."
 
@@ -31,12 +23,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: Login to GitHub Container Registry
-        # v2.2.0
-        uses: docker/login-action@5139682d94efc37792e6b54386b5b470a68a4737
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker build
         run: "docker build --pull --file=develop-credo/Dockerfile ."
