@@ -1,8 +1,9 @@
-name: Daily Image Builds
+name: Rebuild Images
 
 on:
   schedule:
     - cron: '0 7 * * *'
+  workflow_dispatch:
 
 permissions:
   packages: write
