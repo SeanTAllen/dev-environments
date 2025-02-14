@@ -32,6 +32,7 @@ RUN apk add --update --no-cache \
   libressl-dev \
   lldb \
   make \
+  netcat-openbsd \
   openssh \
   pcre2-dev \
   pinentry-tty \
