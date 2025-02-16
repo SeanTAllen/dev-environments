@@ -1,7 +1,6 @@
-FROM alpine:3.21 AS builder
+FROM alpine:3.20 AS builder
 
 RUN apk add --update --no-cache \
-  atuin \
   binutils-gold \
   build-base \
   clang \
