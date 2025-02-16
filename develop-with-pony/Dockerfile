@@ -21,6 +21,7 @@ RUN apk add --update --no-cache \
 
 # Everything else
 RUN apk add --update --no-cache \
+  atuin \
   binutils-gold \
   build-base \
   clang \
