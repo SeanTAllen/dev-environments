@@ -21,7 +21,6 @@ RUN apk add --update --no-cache \
 
 # Everything else
 RUN apk add --update --no-cache \
-  atuin \
   binutils-gold \
   build-base \
   clang \
@@ -45,6 +44,12 @@ RUN ln -fs /usr/bin/vim /usr/bin/vi
 # Allow me to use doas
 RUN echo "permit persist :wheel" >> /etc/doas.d/doas.conf
 
+WORKDIR /tmp
+
+RUN wget https://github.com/atuinsh/atuin/releases/download/v18.4.0/atuin-x86_64-unknown-linux-musl.tar.gz \
+ && tar -xvf atuin-x86_64-unknown-linux-musl.tar.gz \
+ && mv atuin-x86_64-unknown-linux-musl/atuin /usr/local/bin/
+
 # Pretty shell prompt
 RUN wget https://starship.rs/install.sh \
   && sh install.sh -y
@@ -58,3 +63,9 @@ RUN sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.
  && ponyup update ponyc nightly \
  && ponyup update corral nightly \
  && ponyup update changelog-tool nightly
+
+USER root
+
+RUN rm -rf /tmp/*
+
+
