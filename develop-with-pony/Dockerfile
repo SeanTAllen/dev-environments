@@ -57,7 +57,7 @@ RUN wget https://starship.rs/install.sh \
 USER sean
 
 # Install nightly pony tools for user 'sean'
-ENV PATH "/home/sean/.local/share/ponyup/bin:$PATH"
+ENV PATH="/home/sean/.local/share/ponyup/bin:$PATH"
 
 RUN sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)" \
  && ponyup update ponyc nightly \
