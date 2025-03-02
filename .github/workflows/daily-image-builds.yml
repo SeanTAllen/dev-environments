@@ -75,7 +75,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package-name: ['dev-environment-develop-with-pony', 'dev-environment-develop-credo']
+        package-name: ['dev-environment-develop-with-pony', 'dev-environment-develop-credo', 'dev-environment-develop-postgres']
 
     steps:
       - name: Prune
