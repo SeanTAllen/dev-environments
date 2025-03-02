@@ -4,3 +4,6 @@ LABEL org.opencontainers.image.source="https://github.com/seantallen/dev-environ
 
 RUN apk add --update --no-cache \
   docker
+
+# Set the postgres host to the host machine
+ENV POSTGRES_HOST=172.17.0.1
