@@ -1,6 +1,6 @@
 name: Validate Images
 
-on: pull_request_target
+on: pull_request
 
 concurrency:
   group: validate-images-${{ github.head_ref }}
