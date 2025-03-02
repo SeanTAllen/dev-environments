@@ -11,39 +11,22 @@ permissions:
   packages: read
 
 jobs:
-  validate-develop-with-pony-image-builds:
-    name: Develop with Pony
+  validate-images:
+    name: Validate ${{ matrix.image-type }}
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4.1.1
-      - name: Login to GitHub Container Registry
-        # v2.2.0
-        uses: docker/login-action@5139682d94efc37792e6b54386b5b470a68a4737
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Docker build
-        run: "docker build --pull --file=develop-with-pony/Dockerfile ."
 
-  validate-develop-credo-image-builds:
-    name: Develop credo
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4.1.1
-      - name: Login to GitHub Container Registry
-        # v2.2.0
-        uses: docker/login-action@5139682d94efc37792e6b54386b5b470a68a4737
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Docker build
-        run: "docker build --pull --file=develop-credo/Dockerfile ."
+    strategy:
+      fail-fast: false
+      matrix:
+        image-type: ['develop-with-pony', 'develop-credo', 'develop-postgres']
+        include:
+          - image-type: 'develop-with-pony'
+            display-name: 'Develop with Pony'
+          - image-type: 'develop-credo'
+            display-name: 'Develop credo'
+          - image-type: 'develop-postgres'
+            display-name: 'Develop postgres'
 
-  validate-develop-postgres-image-builds:
-    name: Develop postgres
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Login to GitHub Container Registry
@@ -54,4 +37,4 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker build
-        run: "docker build --pull --file=develop-postgres/Dockerfile ."
+        run: "docker build --pull --file=${{ matrix.image-type }}/Dockerfile ."
