@@ -64,6 +64,11 @@ RUN sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.
  && ponyup update corral nightly \
  && ponyup update changelog-tool nightly
 
+# To get pinentry working on MacOS and Linux I had to put a link in a
+# special location
+RUN mkdir ~/bin \
+  && ln -s /usr/bin/pinentry-tty ~/bin/pinentry-tty
+
 USER root
 
 RUN rm -rf /tmp/*
