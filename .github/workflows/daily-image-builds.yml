@@ -67,7 +67,7 @@ jobs:
         package-name:
           - dev-environment-develop-with-pony
           - dev-environment-develop-credo
-          - develop-lori
+          - dev-environment-develop-lori
           - dev-environment-develop-postgres
 
     steps:
