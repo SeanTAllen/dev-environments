@@ -18,12 +18,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image-type: ['develop-with-pony', 'develop-credo', 'develop-postgres']
         include:
           - image-type: 'develop-with-pony'
             display-name: 'Develop with Pony'
           - image-type: 'develop-credo'
             display-name: 'Develop credo'
+          - image-type: 'develop-lori'
+            display-name: 'Develop lori'
           - image-type: 'develop-postgres'
             display-name: 'Develop postgres'
 
