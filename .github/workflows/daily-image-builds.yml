@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        type: ['credo', 'postgres']
+        type: ['credo', 'postgres', 'lori']
 
     steps:
       - name: Checkout
