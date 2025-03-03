@@ -25,6 +25,7 @@ RUN apk add --update --no-cache \
   build-base \
   clang \
   curl \
+  delta \
   doas \
   git \
   gnupg \
